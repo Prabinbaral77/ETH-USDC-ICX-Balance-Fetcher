@@ -98,12 +98,12 @@
 
 .internal-card-wrapper{
   width: 100%;
-  margin-left: 7%;
-  margin-right: 7%;
+  height: 70vh;
+  margin-left: 5%;
+  margin-right: 5%;
   overflow-y: scroll;
   scroll-behavior: smooth;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 
@@ -131,9 +131,9 @@
   border-radius: 5px;
   overflow: hidden;
   text-align: center;
-  background: url('../public/eth.png') center/cover no-repeat;;
+  background: url('../public/eth.png') -10%/cover no-repeat;;
   background-size: 20%;
-  background-color: #8b7a3a;
+  background-color: #878684;
   border: 3px solid #A8B9C6;
 }
 
@@ -147,9 +147,9 @@
   border-radius: 5px;
   overflow: hidden;
   text-align: center;
-  background: url('../public/icon.png') center/cover no-repeat;;
+  background: url('../public/icon.png') -30%/cover no-repeat;;
   background-size: 40%;
-  background-color: #8b7a3a;
+  background-color: #6e99c5;
 }
 
 .card-wrapper-title{
@@ -165,6 +165,7 @@
 }
 
 .card-title {
+  color: black;
   font-size: 1.2rem;
   font-weight: 600;
 }

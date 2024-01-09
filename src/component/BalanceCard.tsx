@@ -9,12 +9,10 @@ import { getUSDCBalance } from '../utils/getUSDCBalance';
 import { getICXBalance } from '../utils/getIcxBalance';
 import coinToUsdConverters from '../utils/cointousdConverter';
 
-interface BalanceCardProps {
-  displayCategory: string,
-}
 
 
-const BalanceCard: React.FC<BalanceCardProps> = ({ displayCategory }) => {
+
+const BalanceCard = ( ) => {
   const [adminEthBalance, setAdminEthBalance] = useState(0)
   const [adminUsdcalance, setAdminUsdcBalance] = useState(0)
   const [bot1EthBalance, setBot1EthBalance] = useState(0)
@@ -32,6 +30,10 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ displayCategory }) => {
   const [currentEthValue, setCurrentEthValue] = useState(0)
   const [currentIcxValue, setCurrentIcxValue] = useState(0)
 
+  useEffect(() => {
+    console.log(currentIcxValue, "currenticxvalue");
+    
+  }, [currentIcxValue])
 
   const EthWalletWhoseBalanceNeedToFetch = [
     {
@@ -196,6 +198,8 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ displayCategory }) => {
         const response:any = await coinToUsdConverters(asset)
     
         if (response) {
+          console.log(response, "haharesponse", asset);
+          
           if (count === 0) {
             setCurrentEthValue(response)
           }else{
@@ -220,13 +224,10 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ displayCategory }) => {
 
   return (
     <div>
-      {displayCategory === "Ethereum" && (
         <div>
     <div className='balance-card-wrapper'>
       <div className='balance-card-title'>
-      <FontAwesomeIcon icon={faEthereum} size="3x" className='eth-icon' />
-        <p>Gangstaverse EVM Balance</p> 
-        <FontAwesomeIcon icon={faEthereum} size="3x" className='eth-icon' />
+        <p>Gangstaverse Balance Fetcher</p> 
       </div>
       <div className="internal-card-wrapper">
           <CardEth ethBalance={adminEthBalance} usdcBalance={adminUsdcalance} walletDetails = {EthWalletWhoseBalanceNeedToFetch[0]} currentEthValue={currentEthValue}/>
@@ -235,12 +236,12 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ displayCategory }) => {
           <CardEth ethBalance={bot3EthBalance} usdcBalance={bot3Usdcalance} walletDetails = {EthWalletWhoseBalanceNeedToFetch[3]} currentEthValue={currentEthValue}/>
           <CardEth ethBalance={bot4EthBalance} usdcBalance={bot4Usdcalance} walletDetails = {EthWalletWhoseBalanceNeedToFetch[4]} currentEthValue={currentEthValue}/>
           <CardEth ethBalance={bot5EthBalance} usdcBalance={bot5Usdcalance} walletDetails = {EthWalletWhoseBalanceNeedToFetch[5]} currentEthValue={currentEthValue}/>
+         <CardIcx icxBalance={generalWalletIcxBalance}  walletDetails = {IcxWalletWhoseBalanceNeedToFetch[0]} currentIcxValue={currentIcxValue}/>
+
        </div>
       </div>
     </div>
-      )}
-       {displayCategory === "Icon" && (
-        <div>
+        {/* <div>
     <div className='balance-card-wrapper'>
       <div className='balance-card-title'>
       <img src="icx.svg" alt="ICX" width="50" height="50" className='icon-img' />
@@ -251,8 +252,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({ displayCategory }) => {
          <CardIcx icxBalance={generalWalletIcxBalance}  walletDetails = {IcxWalletWhoseBalanceNeedToFetch[0]} currentIcxValue={currentIcxValue}/>
        </div>
       </div>
-    </div>
-      )}
+    </div> */}
     </div>
   );
 };

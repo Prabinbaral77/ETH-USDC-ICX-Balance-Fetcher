@@ -191,9 +191,8 @@ const BalanceCard = ( ) => {
 
   const coinToUsdConverter =async () => {
     try {
-      const assets = ['ETH', 'ICX'];
+      const assets = ['ethereum', 'icon'];
       for(let count =0; count < 2; count++) {
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second
         const asset = assets[count];
         const response:any = await coinToUsdConverters(asset)
     
